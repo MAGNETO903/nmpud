@@ -1,0 +1,414 @@
+@font-face {
+    font-family: font_1;
+    src: url(fonts/sci_fi_3.ttf);
+    font-weight: 100;
+} 
+
+@font-face {
+    font-family: font_2;
+    src: url(fonts/sci_fi_4.ttf);
+    font-weight: 100;
+} 
+
+body {
+	margin: 0px;
+	/*background-color: #261100;*/
+	background-color: #291401;
+	background-image: url(back_5.png);
+
+}
+
+#top_left_block, #top_right_block, #left_info_block, #right_info_block, #main_block, #left_formula_block, #right_formula_block, #left_formula_input_block, #right_formula_input_block, #users_list_border {
+	position: absolute;
+	/*border: 2px solid orange;*/
+	box-sizing: border-box;
+	padding: 0px;
+	z-index: 100;
+	/*
+	padding: 2px;
+	*/
+	/*box-shadow: 0 0 10px orange;*/
+	/*background-color: rgba(255, 140, 0, 0.1)*/
+
+}
+
+#left_formula_block,
+#right_formula_block:hover {
+	cursor: pointer;
+}
+
+#right_formula_input_block,
+#left_formula_input_block {
+	display: none;
+}
+
+#left_formula_input_block,
+#right_formula_input_block {
+	background-color: #261100;
+	border: 5px solid orange;
+
+}
+
+#left_formula_options input, #right_formula_options input {
+	box-sizing: border-box;
+	background-color: #261100;
+	border-color: orange;
+	color: white;
+	/*padding: 0px;*/
+}
+
+#left_formula_options input::hover, #right_formula_options input::hover {
+	color: #452600;
+}
+
+#left_formula_options div, #right_formula_options div {
+	font-family: font_2;
+	display: inline-block;
+}
+
+#left_formula_options button, #right_formula_options button {
+	font-family: font_2;
+	background-color: orange;
+	color: white;
+	border-color: orange;
+	cursor: pointer;
+}
+
+#right_formula_editor,
+#left_formula_editor {
+	width: 90%;
+	height: 90%;
+	background-color: rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+}
+
+#top_left_block, #top_right_block {
+	text-align: center;
+	font-family: font_1;
+	color: orange;
+}
+
+#left_formula_block, #right_formula_block {
+	text-align: center;
+	color: darkorange;
+	font-family: font_2;
+	line-height: 200px;
+	transition: background-color 0.3s;
+}
+
+#left_formula_block:hover, #right_formula_block:hover {
+	background-color: #452600;
+	transition: background-color 0.3s;
+}
+
+
+/*
+#top_left_block, #top_right_block {
+	background-color: red;
+}
+
+#left_info_block, #right_info_block {
+	background-color: green;
+}
+
+#main_block {
+	background-color: blue;
+}
+
+#left_formula_block {
+	background-color: red;
+}
+
+#right_formula_block {
+	background-color: black;
+}
+
+*/
+
+#right_formula_input_block {
+  color: orange;
+  border-color: white;
+  /*background: black;*/
+}
+#right_formula_input_block .mq-matrixed {
+  background: black;
+}
+#right_formula_input_block .mq-matrixed-container {
+  filter: progid:DXImageTransform.Microsoft.Chroma(color='black');
+}
+
+#left_formula_input_block {
+  color: white;
+  border-color: orange;
+  /*background: black;*/
+}
+#left_formula_input_block .mq-matrixed {
+  background: black;
+}
+#left_formula_input_block .mq-matrixed-container {
+  filter: progid:DXImageTransform.Microsoft.Chroma(color='black');
+}
+
+#inner_right_formula_editor, #inner_left_formula_editor {
+	border-color: orange;
+}
+
+/*
+
+.mq-editable-field {
+	border: none;
+	background-color:  #261100;
+	caret-color: white;
+}
+
+.mq-cursor span {
+	color: white;
+	border-color: white;
+	background-color: white;
+}
+*/
+
+#inner_left_formula_editor > span.mq-root-block > span.mq-cursor {
+	border-color: white;
+}
+
+.katex { 
+	font-size: 2.1em; 
+}
+
+#left_formula_block .katex {
+	color: white;
+}
+
+.status_table {
+	width: 90%;
+	color: grey;
+	font-family: font_2;
+	margin-left: 5%;
+}
+
+h1 {
+	line-height: 2.25em;
+}
+
+h2 {
+	line-height: 1.75em;
+}
+
+h1, h2 {
+	font-family: font_1;
+	color: orange;
+	text-shadow: 0 0 5px orange;
+	z-index: 100;
+	
+	margin: 0;
+	
+}
+
+
+
+.red_text {
+	color: red;
+	text-shadow: 0 0 10px red;
+}
+
+.orange_text {
+	color: orange;
+}
+
+.green_text {
+	color: #22ff00;
+	text-shadow: 0 0 10px #22ff00;
+}
+
+
+
+
+.content {
+	/*border: 2px solid orange;*/
+	box-sizing: border-box;
+	box-shadow: 0 0 5px orange;
+	/*background-color: #261100;*/
+	/*background-color: rgba(255, 140, 0, 0.2);*/
+	border: 2px solid orange;
+	border-radius: 10px;
+}
+
+canvas {
+	border-radius: 5px;
+}
+
+.calc_time {
+	font-size: 3em;
+}
+
+#main_block_content svg {
+	border-radius: 10px;
+	margin: 0px;
+}
+
+#main_block_content div {
+	border-radius: 10px;
+	margin: 0px;
+}
+
+.dropdown-content {
+	padding: 10px;
+	text-decoration: none;
+	color: orange;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 200;
+	display: none;
+	font-size: 2.5em;
+}
+
+.dropdown-content a {
+	color: orange;
+	text-decoration: none;
+}
+
+#top_right_block:hover .dropdown-content {display: block;}
+
+.dropdown-content:hover .dropdown-content {display: block;}
+
+#bank {
+	z-index: 300;
+	position: absolute;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+#bank table td tr th {
+	border: 2px solid orange;
+	color: orange;
+}
+
+#bank {
+	color: orange;
+	font-size: 1.2em;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+#bank table {
+	color: orange;
+	border: 2px solid orange;
+}
+
+#bank td {
+	border: 2px solid orange;
+}
+
+#bank th {
+	border: 2px solid orange;
+}
+
+.menu_icon_el {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+  background: orange;
+}
+
+#menu_icon {
+	position: absolute;
+	z-index: 300;
+}
+
+#menu_icon:hover {
+	cursor: pointer;
+}
+
+#menu_icon:hover .menu_icon_el {
+	background-color: white;
+}
+
+
+
+.sidenav {
+	font-family: font_2;
+
+	display: block;
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    color: white;
+    /*color: rgba(0, 0, 0, 0);*/
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: width 0.2s linear
+}
+
+/*
+.sidenav:hover a{
+	color: white;
+}
+*/
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 2.5vmin;
+     color: white;
+    /*color: #818181;*/
+    display: block;
+    cursor: pointer;
+}
+
+.sidenav a:hover {
+	color: rgb(255, 134, 13);
+	text-shadow: rgba(255, 134, 13, 0.7) 0 0 7px;
+    /*color: #f1f1f1;*/
+}
+
+.test_icon:hover {
+	cursor: pointer;
+}
+
+#users_list_table td, #users_list_table tr {
+	border: 2px solid rgb(255, 134, 13);
+	color: rgb(255, 134, 13);
+	text-shadow: rgba(255, 134, 13, 0.7) 0 0 7px;
+	box-shadow: rgba(255, 134, 13, 0.7) 0 0 7px;
+	padding: 1%;
+	font-family: font_2;
+}
+
+#bank table, #bank td, #bank tr, #bank th {
+	
+	color: rgb(255, 134, 13);
+	text-shadow: rgba(255, 134, 13, 0.7) 0 0 7px;
+	box-shadow: rgba(255, 134, 13, 0.7) 0 0 7px;
+	/*font-family: font_2;*/
+}
+
+#users_list_table td {
+	cursor: pointer;
+}
+
+#users_list_table {
+	width: 100%;
+}
+
+#users_list_table_div {
+	overflow-y: hidden;
+	width: 90%;
+	height: 60%;
+}
+
+#users_list_table {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+#auth_page {
+	background-color: rgba(0, 0, 0, 0.9);
+	display: none;
+	position: absolute;
+	z-index: 999;
+	overflow: auto;
+}

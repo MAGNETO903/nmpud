@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>nmpud</title>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  	<script src="lib/nerdamer-1.1.9/nerdamer.core.js"></script> 
+	<script src="lib/nerdamer-1.1.9/Algebra.js"></script>
+	<script src="lib/nerdamer-1.1.9/Calculus.js"></script>
+	<script src="lib/nerdamer-1.1.9/Solve.js"></script>
+	<script src="lib/nerdamer-1.1.9/Extra.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.2/math.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+
+
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js" integrity="sha512-Qsh05D07P6dURSZn8Qk+j8GI7cEK0OhXleZvTofmucwoDSkBC0juWf1401JdSE8os2kWEezMu7e9mlnszm3yEw==" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css" integrity="sha512-vPg9GqsZZ4LHv9BkFfZSXt7y4D7YaARPU2JFmpZug4EgtJJrumytMAFZkNSk2LSyqWir0TNbh2tBq7UJIMxvlA==" crossorigin="anonymous" />
+
+  	<!--
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
+-->
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.0.2/echarts.min.js" integrity="sha512-t9GZbGKCH5MuYUFsq5AdrhllT0kdnc2fNMizKDgLXBBXgHP2dXxjRPOzYJauAXW9OXLlSYELUqWD30k7cb0Mkg==" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+  	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+
+<div id="top_left_block">
+	<div class="content">
+		<div id="menu_icon" onclick="open_menu();">
+			
+		
+			<div class="menu_icon_el"></div>
+			<div class="menu_icon_el"></div>
+			<div class="menu_icon_el"></div>
+		</div>
+		<h1>NMPUD</h1>	
+	</div>
+</div>
+
+
+<div id="left_info_block">
+	<div class="content">
+		
+	
+		<center><h2>Плотность распределения</h2></center>
+		<table class="status_table">
+			<tr>
+				<td>Статус:</td>
+				<td id="status_1">ожидание</td>
+			</tr>
+			<tr>
+				<td>Прогресс:</td>
+				<td id="progress_1" >0%</td>
+			</tr>
+			<tr>
+				<td>Скорость:</td>
+				<td id="speed_1" >0 <br> знач/сек</td>
+			</tr>
+			<tr>
+				<td>Количество значений:</td>
+				<td id="n_values_1">0</td>
+			</tr>
+			<tr>
+				<td>Времени прошло:</td>
+				<td id="total_time_1">0ms</td>
+			</tr>
+			<tr>
+				<td>Время одной операции:</td>
+				<td id="calc_time_1" >-нс</td>
+			</tr>
+		</table>
+		<!--
+		<center>
+			<h2 class="green_text">Время одной операции:</h2>	
+		
+		
+		<h1 id="calc_time_1" class="calc_time green_text" >-нс</h1>
+		</center>
+		-->
+	</div>
+</div>
+<div id="main_block">
+	<div class="content" id="main_block_content">
+		
+	</div>
+</div>
+<div id="right_info_block">
+	<div class="content">
+		<center><h2>Гистограмма</h2></center>
+		<table class="status_table">
+			<tr>
+				<td>Статус:</td>
+				<td id="status_2">ожидание</td>
+			</tr>
+			<tr>
+				<td>Прогресс:</td>
+				<td id="progress_2" >0%</td>
+			</tr>
+			<tr>
+				<td>Скорость:</td>
+				<td id="speed_2" >0 <br> знач/сек</td>
+			</tr>
+			<tr>
+				<td>Количество значений:</td>
+				<td id="n_values_2">0</td>
+			</tr>
+			<tr>
+				<td>Времени прошло:</td>
+				<td id="total_time_2">0ms</td>
+			</tr>
+		</table>
+		<center>
+			<h2 class="green_text" >Время одной операции:</h2>	
+		
+		
+		<h1 id="calc_time_2" class="calc_time green_text" >-нс</h1>
+		</center>
+	</div>
+</div>
+<div id="left_formula_block" onclick="left_formula_input_block.open();">
+	<div class="content" id="left_formula_block_content">
+		введите формулу	
+	</div>
+	
+</div>
+<div id="right_formula_block" onclick="right_formula_input_block.open();">
+	<div class="content" id="right_formula_block_content">
+		введите формулу
+	</div>
+	
+</div>
+<div id="left_formula_input_block">
+	<div id="left_formula_editor">
+		<div id="inner_left_formula_editor">
+			
+		</div>
+	</div>
+
+	<form id="left_formula_options" onsubmit="return false;">
+		<div>
+			<input placeholder="a" id="left_formula_input_1" type="number" step=any name="a"><br>
+			<label id="left_formula_label_1" for="left_formula_input_1">мин. значение аргумента</label>
+		</div>
+		<div>
+			<input placeholder="b" id="left_formula_input_2" type="number" step=any name="b"><br>
+			<label id="left_formula_label_2" for="left_formula_input_2">макс. значение аргумента</label>
+		</div>
+		
+		<button style="font-family: font_2;" id="left_formula_launch_btn" onclick="left_formula_input_block.start(); return false;" >запуск</button>
+	</form>
+</div>
+<div id="right_formula_input_block">
+	<div id="right_formula_editor">
+		<div id="inner_right_formula_editor">
+			
+		</div>
+	</div>
+	<form id="right_formula_options" onsubmit="return false;">
+		<div>
+			<input placeholder="40" id="right_formula_input_1" type="number" name="cols_num"><br>
+			<label id="right_formula_label_1" for="right_formula_input_1">число столбцов</label>
+		</div>
+		
+		<div>
+			<input placeholder="1000000" id="right_formula_input_2" type="number" name="values_num"><br>
+			<label id="right_formula_label_2" for="right_formula_input_2">число случайных значений</label>
+		</div>
+		
+		
+		<button style="font-family: font_2;"  id="right_formula_launch_btn" onclick="right_formula_input_block.start(); return false;" >запуск</button>
+	</form>
+</div>
+
+<div id="top_right_block">
+	<div class="content">
+		<h2 id="menu" class="red_text">не авторизованы</h2>	
+		
+	</div>
+</div>
+
+<center><div id="bank">
+	<center>
+		<h1 class="orange_text" >Банк формул</h1>
+		<table>
+			<tr>
+			    <th>Формула плотности</th>
+			    <th>Моделирующая формула</th>
+			    <th>min u</th>
+			    <th>max u</th>
+			    <th>Время 1 обращения к мод. формуле</th>
+			    <th></th>
+			</tr>
+		</table>
+	</center>
+</div></center>
+
+<div id="auth_page">
+	
+	<div id="users_list_border">
+		<div id="users_list" >
+			<center>
+				<h1 class="white_text" >выберите себя</h1>
+				<div id="users_list_table_div">
+					<table id="users_list_table" >
+					
+					</table>
+				</div>			
+			</center>
+		</div>
+	</div>
+</div>
+
+
+<div id="side_menu" class="sidenav" class="orange_text">
+
+  <a id = "nav_system" onclick="open_system();" >Система</a>
+  <a id="nav_bank" onclick="open_bank();">Банк формул</a>
+  <a id="nav_auth" onclick="open_auth();">Авторизоваться</a>
+  <!--<a id="nav_subsystem_1" onclick="open_subsystem_1();">Генератор моделирующей формулы</a>-->
+</div>
+
+<script type="text/javascript" src="css_setup.js"></script>
+<script type="text/javascript" src="init.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
