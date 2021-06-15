@@ -36,33 +36,41 @@ function nthRoot(x, n) {
 
 
 Math.pow = nthRoot
-
+var arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length
 //console.log(shift_26(2105632645931929))
 
 //console.log(45887173 >> 26)
 //console.log(right_shift(45887173, 26))
+
+var p2_26 = Math.pow(2, 26);
+var p2_14 = Math.pow(2, 14);
+
+var right_shift_26_v2 = function(num) {
+	return Math.trunc(num / p2_26)
+}
+
+var right_shift_14_v2 = function(num) {
+	return Math.trunc(num / p2_14)
+}
+
+var left_shift_26 = function(num) {
+	return num * p2_26;
+}
+
+var left_shift_14 = function(num) {
+	return num * p2_14;
+}
 u = [3, 0];
 m = [45887173, 11368];
 x = [Math.pow(2.0, -40.0), Math.pow(2.0, -14.0)];
 var rnd40_64 = function() {
-	//console.log('x=', x)
-	//console.log("--------------------")
-
-	//console.log("m=", m)
-	//console.log("u=", u)
 
 	var c0 = m[0]*u[0]
-	//console.log("c0=",c0)
 	var c1 = m[0]*u[1] + m[1]*u[0]
-	//console.log("c1=",c1)
-	
-	//console.log(((c0 >> 26) << 26))
 
 	u[0] = c0 - left_shift_26(right_shift_26_v2(c0))
 	var n = c1 + right_shift_26_v2(c0)
 	u[1] = n - left_shift_14(right_shift_14_v2(n))
-
-	//console.log("u=", u)
 
 	return u[0]*x[0] + u[1]*x[1];
 }
@@ -124,6 +132,7 @@ function barChartPlotter(e) {
 
 var calculator = {
 	validate_latex_expr: function(latex_expr) {
+		console.log(latex_expr)
 		var valid = true
 		var expr = nerdamer.convertFromLaTeX(latex_expr)
 		try {
@@ -152,38 +161,39 @@ var calculator = {
 		}
 	},
 	measure_time: function(func) {
-		//var func = this.get_function(expr, args)
 		var times = []
 
-		for (var i=0; i < 200; i++) {
+		for (var i=0; i < 40; i++) {
 			var s_time = performance.now()
 			var s;
-			for (var j=0; j < 2000; j++) {
-				func(Math.random())
+			for (var j=0; j < 10000; j++) {
+				func(rnd40_64())
 
 			}
 			var dur = performance.now() - s_time;
 			times.push(dur)
 		}
 
+		//console.log(times)
+
 		var min_time = 100000
-		for (var i=0; i < 200; i++) {
-			if (times[i] < min_time) {
+		for (var i=0; i < 40; i++) {
+			if (times[i] < min_time && min_time != 0) {
 				min_time = times[i]
 			}
 		}
 
+		
+
 		var filtered_times = []
 
-		for (var i=0; i < 200; i++) {
+		for (var i=0; i < 40; i++) {
 			if (times[i] < min_time*3) {
 				filtered_times.push(times[i])
 			}
 		}
 
-	
 		//console.log(filtered_times)
-
 		return arrAvg(filtered_times)/2000*1000*1000
 	}
 }
