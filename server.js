@@ -146,7 +146,9 @@ io.on('connection', function(socket) {
 
           }
         }
-        save_log(info)
+        if (valid(info)) {
+          save_log(info)
+        }
         active_users.splice(i, 1)
         break;
       }
@@ -181,7 +183,7 @@ io.on('connection', function(socket) {
       }
     }
     //console.log(info)
-    if (vaild(info)) {
+    if (valid(info)) {
       save_log(info)
     }
     //console.log(date_str, "- пользователь ", data.name, "сгенерировал новую гистограмму")
@@ -201,7 +203,7 @@ io.on('connection', function(socket) {
       }
     }
     //console.log(info)
-    if (vaild(info)) {
+    if (valid(info)) {
       save_log(info)
     }
   })
@@ -218,7 +220,7 @@ io.on('connection', function(socket) {
 
           }
         }
-        if (vaild(info)) {
+        if (valid(info)) {
           save_log(info)
         }
         //var date_str = process_date(date);
