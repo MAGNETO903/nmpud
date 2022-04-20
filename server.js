@@ -41,6 +41,7 @@ var save_log = function(data) {
   var username = data.name;
   var action = data.action;
   var data = JSON.stringify(data.data)
+
   var command = `INSERT INTO system_logs (date, time, username, action, data) \n Values('${date}', '${time}', '${username}', ${action}, '${data}');`
   console.log(command)
   client.query(command, (err, res) => {
@@ -56,6 +57,7 @@ var save_log = function(data) {
   //fs.writeFileSync('log.json', JSON.stringify(file, null, 2));
   
 }
+
 
 // список пользователи
 var users = [{
@@ -115,6 +117,16 @@ users_info.unshift("Черкашин Данил Андреевич")
 users_info.unshift("Постовалов Ярослав Сергеевич")
 users_info.unshift("Буцковский Кирилл Антонович")
 
+var valid = function(info) {
+  var valid_name = info.name == '' || users_info.includes(info.name)
+
+  var valid_date = true
+
+  
+
+  return valid_name && valid_date
+}
+
 var active_users = []
 
 io.on('connection', function(socket) {
@@ -147,7 +159,9 @@ io.on('connection', function(socket) {
 
       }
     }
-    save_log(info)
+    if (valid(info)) {
+      save_log(info)
+    }
     var date_str = process_date(date);
     console.log(date_str, "- пользователь авторизовался как", data)
     active_users.push({"id": socket.id, "name": data})
@@ -167,7 +181,9 @@ io.on('connection', function(socket) {
       }
     }
     //console.log(info)
-    save_log(info)
+    if (vaild(info)) {
+      save_log(info)
+    }
     //console.log(date_str, "- пользователь ", data.name, "сгенерировал новую гистограмму")
   })
 
@@ -185,7 +201,9 @@ io.on('connection', function(socket) {
       }
     }
     //console.log(info)
-    save_log(info)
+    if (vaild(info)) {
+      save_log(info)
+    }
   })
 
   socket.on('disconnect', function() {
@@ -200,7 +218,9 @@ io.on('connection', function(socket) {
 
           }
         }
-        save_log(info)
+        if (vaild(info)) {
+          save_log(info)
+        }
         //var date_str = process_date(date);
         //console.log(date_str, "- пользователь", active_users[i].name, " вышел из системы")
         active_users.splice(i, 1)
@@ -239,24 +259,49 @@ fs.access("log.json", fs.F_OK, (err) => {
   //file exists
 })
 
+var get_last_log = function() {
+  var command = `
+  SELECT Id,
+    Date,
+    Time,
+    Username
+  FROM system_logs
+  ORDER BY Id DESC
+  LIMIT 1
+`;
+
+
+ //console.log(command)
+  client.query(command, (err, res) => {
+  if (err) {
+    console.log(err);
+  } else for (let row of res.rows) {
+    //console.log(row)
+    console.log(row)
+    return row
+    //console.log(JSON.stringify(row));
+  }
+});
+}
 
 
 
 
+/*
+var command = `
+DELETE FROM system_logs
+WHERE Username = user;
+`
+client.query(command, (err, res) => {
+  if (err) {
+    console.log(err);
+  } else for (let row of res.rows) {
+    //console.log(row)
+    console.log(row)
+    //return row
+    //console.log(JSON.stringify(row));
+  }
+})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
