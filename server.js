@@ -14,8 +14,8 @@ const fs = require("fs");
 
 const { Client } = require('pg')
 
-const connect_str = "postgres://ihsldngbqytdhn:79ce14241351340b35e3767ea443c28d41ac3057a1d08caeae60b57526662dfb@ec2-44-205-159-94.compute-1.amazonaws.com:5432/d4qgpgdcl49fr1"
-
+//const connect_str = "postgres://ihsldngbqytdhn:79ce14241351340b35e3767ea443c28d41ac3057a1d08caeae60b57526662dfb@ec2-44-205-159-94.compute-1.amazonaws.com:5432/d4qgpgdcl49fr1"
+var connect_str = process.env.DATABASE_URL;
 
 // подключаемся к БД
 const client = new Client({
