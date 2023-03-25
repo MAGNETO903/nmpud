@@ -1,13 +1,13 @@
 {
-  "name": "chemels.io",
-  "version": "0.3.0",
+  "name": "nmpud system",
+  "version": "3.0.0",
   "description": "A sample Node.js app using Express 4",
   "engines": {
     "node": "12.x"
   },
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "node test.js"
   },
   "dependencies": {
