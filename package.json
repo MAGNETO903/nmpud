@@ -31,8 +31,8 @@
     "netlify-lambda": "^1.6.3",
     "netlify-cli": "^10.14.0",
     "nodemon": "^1.19.2",
-    "serverless-http": "^2.3.0",
-    "pg": "^8.4.1"
+    "pg": "^8.4.1",
+    "serverless-http": "^2.3.0"
   },
   "repository": {
     "type": "git",
