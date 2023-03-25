@@ -25,7 +25,7 @@ const client = new Client({
   ssl: { rejectUnauthorized: false }
 });
 
-client.connect();
+//client.connect();
 
 // загрузка личных модулей
 //var rnd40_64 = require("./random_generator.js");
