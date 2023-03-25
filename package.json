@@ -22,7 +22,6 @@
     "socket.io": "^4.0.0",
     "pg": "^8.4.1",
     "netlify-lambda": "^1.6.3",
-    "pg-native": "^3.0.0"
   },
   "devDependencies": {
     "request": "^2.88.2",
@@ -33,7 +32,7 @@
     "netlify-cli": "^10.14.0",
     "nodemon": "^1.19.2",
     "serverless-http": "^2.3.0",
-    "pg-native": "^3.0.0"
+    "pg": "^8.4.1"
   },
   "repository": {
     "type": "git",
