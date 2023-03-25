@@ -1,3 +1,6 @@
+[Settings]
+  ID = "c74ab7b1-4c09-405f-94b8-b69eab29b189"
+
 [build]
   command = "npm install && npm run build"
   functions = 'functions'
