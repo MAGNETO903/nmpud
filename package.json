@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node test.js",
-    "build": "netlify build"
+    "build": "netlify link || netlify build"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
