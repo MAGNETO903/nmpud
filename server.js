@@ -7,8 +7,8 @@ const server = require('http').Server(app); //сервер
 var port = 8080
 //const restler = require('restler');
 const querystring = require('querystring');
-const nerdamer = require('nerdamer');
-const bodyParser = require('body-parser');
+//const nerdamer = require('nerdamer');
+//const bodyParser = require('body-parser');
 const io = require('socket.io')(server)
 
 const fs = require("fs");
