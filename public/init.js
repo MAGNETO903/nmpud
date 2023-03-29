@@ -1,7 +1,9 @@
 var p2_26 = Math.pow(2, 26);
 var p2_14 = Math.pow(2, 14);
 
-var arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length
+var arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+
+var SERVER_URL = 'https://nmpud-cherkashindaniel.b4a.run/'
 
 
 var right_shift_26_v2 = function(num) {
@@ -1071,5 +1073,5 @@ var register = function(name) {
 
 setup_math_parser();
 
-var socket = io();
+var socket = io(SERVER_URL);
 var my_name = '';
