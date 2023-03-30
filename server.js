@@ -284,7 +284,7 @@ io.on('connection', function(socket) {
 app.use(express.static(__dirname + '/public'));
 //app.use(bodyParser.urlencoded({extended: false}));
 //app.use(bodyParser.json())
-//app.use(cors());
+app.use(cors());
 
 // запуск сервера
 server.listen(port);
