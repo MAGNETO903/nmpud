@@ -1,6 +1,6 @@
 
 # Use the official Node.js image as the base image
-FROM node:12
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -11,5 +11,5 @@ COPY . /app
 # Install the application dependencies
 RUN npm install
 
-EXPOSE 8080
+EXPOSE 3000
 CMD [ "node", "server.js" ]
