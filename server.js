@@ -21,12 +21,12 @@ const connect_str = 'postgres://nmpud_db_user:ii0WAYpPEK6ZcEbK9K4nkg1kTWQAOD3o@d
 
 
 // подключаемся к БД
-/*
+
 const client = new Client({
   connectionString: connect_str,
   ssl: { rejectUnauthorized: false }
 });
-*/
+
 //client.connect();
 
 // загрузка личных модулей
@@ -39,7 +39,7 @@ var process_date = function(date) {
   return date.getFullYear() + "-" + (Number(date.getMonth())+1) + "-" + date.getDate() + "|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
 
-/*
+
 var save_log = function(data) {
   var date = data.date.split("|")[0];
   var time = data.date.split("|")[1];
@@ -62,7 +62,7 @@ var save_log = function(data) {
   //fs.writeFileSync('log.json', JSON.stringify(file, null, 2));
   
 }
-*/
+
 
 // список пользователи
 var users = [{
@@ -175,7 +175,7 @@ var valid = function(info) {
 }
 
 var active_users = []
-/*
+
 io.on('connection', function(socket) {
   console.log("Someone connected!")
   socket.emit('users', users_info);
@@ -278,7 +278,7 @@ io.on('connection', function(socket) {
   })
 
 })
-*/
+
 
 // подготовка
 app.use(express.static(__dirname + '/public'));
@@ -293,7 +293,7 @@ server.listen(port);
 console.log('The server avialable at', port);
 
 // проверка на наличие файла log.json
-/*
+
 fs.access("log.json", fs.F_OK, (err) => {
   if (err) {
     //console.error(err)
@@ -306,9 +306,9 @@ fs.access("log.json", fs.F_OK, (err) => {
 
   //file exists
 })
-*/
 
-/*
+
+
 var get_last_log = function() {
   var command = `
   SELECT Id,
@@ -333,7 +333,7 @@ var get_last_log = function() {
   }
 });
 }
-*/
+
 
 
 
