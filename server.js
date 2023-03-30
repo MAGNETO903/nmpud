@@ -39,6 +39,7 @@ var process_date = function(date) {
   return date.getFullYear() + "-" + (Number(date.getMonth())+1) + "-" + date.getDate() + "|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
 }
 
+/*
 var save_log = function(data) {
   var date = data.date.split("|")[0];
   var time = data.date.split("|")[1];
@@ -61,7 +62,7 @@ var save_log = function(data) {
   //fs.writeFileSync('log.json', JSON.stringify(file, null, 2));
   
 }
-
+*/
 
 // список пользователи
 var users = [{
@@ -310,6 +311,7 @@ fs.access("log.json", fs.F_OK, (err) => {
 })
 */
 
+/*
 var get_last_log = function() {
   var command = `
   SELECT Id,
@@ -334,6 +336,7 @@ var get_last_log = function() {
   }
 });
 }
+*/
 
 
 
