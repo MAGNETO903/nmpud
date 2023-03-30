@@ -8,7 +8,7 @@ var port = 3000
 //const restler = require('restler');
 const querystring = require('querystring');
 //const nerdamer = require('nerdamer');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const io = require('socket.io')(server)
 
 const fs = require("fs");
@@ -282,8 +282,8 @@ io.on('connection', function(socket) {
 
 // подготовка
 app.use(express.static(__dirname + '/public'));
-//app.use(bodyParser.urlencoded({extended: false}));
-//app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json())
 app.use(cors());
 
 // запуск сервера
