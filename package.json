@@ -2,9 +2,6 @@
   "name": "nmpud system",
   "version": "3.0.0",
   "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "12.x"
-  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
