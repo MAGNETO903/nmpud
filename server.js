@@ -11,7 +11,7 @@ const querystring = require('querystring');
 const bodyParser = require('body-parser');
 const io = require('socket.io')(server, {
   cors: {
-    origin: process.env.URL || 'https://nmpud-cherkashindaniel.b4a.run/',
+    origin: process.env.URL || ['https://nmpud-cherkashindaniel.b4a.run/', 'https://nmpud.netlify.app/'],
     methods: ["GET", "POST"]
   }
 });
