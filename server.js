@@ -174,7 +174,7 @@ var valid = function(info) {
 }
 
 var active_users = []
-
+/*
 io.on('connection', function(socket) {
   console.log("Someone connected!")
   socket.emit('users', users_info);
@@ -277,6 +277,7 @@ io.on('connection', function(socket) {
   })
 
 })
+*/
 
 // подготовка
 app.use(express.static(__dirname + '/public'));
@@ -294,6 +295,7 @@ server.listen(port);
 console.log('The server avialable at', port);
 
 // проверка на наличие файла log.json
+/*
 fs.access("log.json", fs.F_OK, (err) => {
   if (err) {
     //console.error(err)
@@ -306,6 +308,7 @@ fs.access("log.json", fs.F_OK, (err) => {
 
   //file exists
 })
+*/
 
 var get_last_log = function() {
   var command = `
