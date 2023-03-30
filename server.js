@@ -9,7 +9,12 @@ var port = 3000
 const querystring = require('querystring');
 //const nerdamer = require('nerdamer');
 const bodyParser = require('body-parser');
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+  cors: {
+    origin: process.env.URL || 'https://nmpud-cherkashindaniel.b4a.run/',
+    methods: ["GET", "POST"]
+  }
+});
 
 const fs = require("fs");
 
