@@ -23,8 +23,8 @@ const { Client } = require('pg')
 
 //const connect_str = "postgres://ihsldngbqytdhn:79ce14241351340b35e3767ea443c28d41ac3057a1d08caeae60b57526662dfb@ec2-44-205-159-94.compute-1.amazonaws.com:5432/d4qgpgdcl49fr1"
 //const connect_str = "postgres://gocbkenodcpgoz:d177c4713c73ed80cc3264dacccce40e22af7aa3d47f95cbd30cb701b318934b@ec2-54-146-142-58.compute-1.amazonaws.com:5432/d3ndne7rqbci5h"
-const connect_str = 'postgres://nmpud_db_user:ii0WAYpPEK6ZcEbK9K4nkg1kTWQAOD3o@dpg-ce55mpda499e19j1a6j0-a.frankfurt-postgres.render.com/nmpud_db'
-
+//const connect_str = 'postgres://nmpud_db_user:ii0WAYpPEK6ZcEbK9K4nkg1kTWQAOD3o@dpg-ce55mpda499e19j1a6j0-a.frankfurt-postgres.render.com/nmpud_db'
+var connect_str = 'postgres://sgdncwxc:iWlrq4ST83vZ9Q895ljEIsvkC472NP9k@surus.db.elephantsql.com/sgdncwxc'
 
 // подключаемся к БД
 
@@ -33,7 +33,7 @@ const client = new Client({
   ssl: { rejectUnauthorized: false }
 });
 
-//client.connect();
+client.connect();
 
 // загрузка личных модулей
 //var rnd40_64 = require("./random_generator.js");
