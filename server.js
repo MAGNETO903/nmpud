@@ -284,7 +284,7 @@ var get_last_log = function() {
 
 setInterval(function() {
   get_last_log();
-}, 10000);
+}, 24*60*60*1000);
 
 /*
 var command = `
