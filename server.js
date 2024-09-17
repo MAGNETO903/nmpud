@@ -25,8 +25,24 @@ const { Client } = require('pg')
 //const connect_str = "postgres://gocbkenodcpgoz:d177c4713c73ed80cc3264dacccce40e22af7aa3d47f95cbd30cb701b318934b@ec2-54-146-142-58.compute-1.amazonaws.com:5432/d3ndne7rqbci5h"
 //const connect_str = 'postgres://nmpud_db_user:ii0WAYpPEK6ZcEbK9K4nkg1kTWQAOD3o@dpg-ce55mpda499e19j1a6j0-a.frankfurt-postgres.render.com/nmpud_db'
 //var connect_str = 'postgres://sgdncwxc:iWlrq4ST83vZ9Q895ljEIsvkC472NP9k@surus.db.elephantsql.com/sgdncwxc'
+// var connect_str =  'postgres://postgres:onFLzJZNhKxe0LY9@db.xhxwbrvegsjzfbyzmroy.supabase.co:6543/postgres'
+/*
+var db_host = 'aws-0-eu-central-1.pooler.supabase.com';
+var db_name = 'postgres';
 
-var connect_str = 'postgres://postgres:onFLzJZNhKxe0LY9@db.xhxwbrvegsjzfbyzmroy.supabase.co:6543/postgres'
+var db_port = '6543';
+var db_pswd = `onFLzJZNhKxe0LY9`
+var db_usr_name = 'postgres.xhxwbrvegsjzfbyzmroy';
+
+
+var connect_str = `postgresql://postgres.xhxwbrvegsjzfbyzmroy:Nme5+rQ8V&*FKC#@aws-0-eu-central-1.pooler.supabase.com:6543/postgres`
+var connect_str = `postgresql://postgres.xhxwbrvegsjzfbyzmroy:Nme5+rQ8V&*FKC#@aws-0-eu-central-1.pooler.supabase.com:6543/postgres`
+
+var connect_str = 'postgresql://' + db_usr_name + ':' + db_pswd + '@' + db_host + ':' + db_port + '/' + db_name;
+*/
+
+
+var connect_str = `postgresql://postgres.xhxwbrvegsjzfbyzmroy:onFLzJZNhKxe0LY9@aws-0-eu-central-1.pooler.supabase.com:6543/postgres`
 
 // подключаемся к БД
 
