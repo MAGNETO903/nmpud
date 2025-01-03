@@ -1071,5 +1071,5 @@ var register = function(name) {
 
 setup_math_parser();
 
-var socket = io();
+var socket = io("https://nmpud-8iv8.onrender.com/");
 var my_name = '';
