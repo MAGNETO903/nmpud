@@ -291,6 +291,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
 app.use(cors());
 
+// Health-check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // запуск сервера
 server.listen(port);
 
